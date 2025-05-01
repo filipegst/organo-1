@@ -1,0 +1,15 @@
+
+
+.botao-visibilidade{
+    display: flex;
+    justify-self: flex-end;
+    margin-right: 200px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    background-color: #6278F7;
+    margin-bottom: 50px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+

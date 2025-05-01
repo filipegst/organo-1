@@ -3,6 +3,7 @@ import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Rodape from "./componentes/Rodape";
 import Time from "./componentes/Time";
+import BotaoVisibilidade from "./componentes/BotaoVisibilidade";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -269,21 +270,34 @@ function App() {
 
   }
 
+  const [visivel, setVisivel] = useState(true)
+
+   function mudaVisibilidade() {
+      setVisivel(!visivel)
+    }
+
+
   return (
     <div>
       <Banner />
       
       <Formulario 
+      visivel={visivel}
       criarTime={criarTime}
       times={times.map(time => time.nome)} 
       aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} 
       />
       
+        <BotaoVisibilidade
+          mudaVisibilidade={mudaVisibilidade}
+        />
+      
       <section className="times">
         <h1>Minha organização</h1>
         
         {times.map((time, indice) =>  
-          <Time 
+          
+      <Time 
             aoFavoritar={alterarFavorito}
             mudarCor={mudarCorDoTime}
             key={indice} 

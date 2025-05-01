@@ -4,7 +4,7 @@ import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './formulario.css'
 
-const Formulario = ({aoCadastrar, times, criarTime}) => {
+const Formulario = ({aoCadastrar, times, criarTime, visivel}) => {
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -26,7 +26,7 @@ const Formulario = ({aoCadastrar, times, criarTime}) => {
 
     return (
         <section className="formulario-container">
-            <form className="formulario" onSubmit={aoSubmeter}>
+            {visivel && <form className="formulario" onSubmit={aoSubmeter}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
                 <CampoTexto
                     obrigatorio={true}
@@ -52,8 +52,9 @@ const Formulario = ({aoCadastrar, times, criarTime}) => {
                     aoAlterado={valor => setTime(valor)}/>
                 <Botao texto='Criar card' />
             </form>
+            }
             
-            <form className="formulario" onSubmit={(evento)=> {
+            { visivel && <form className="formulario" onSubmit={(evento)=> {
                 evento.preventDefault()
                 
                 criarTime({
@@ -83,7 +84,9 @@ const Formulario = ({aoCadastrar, times, criarTime}) => {
                 
                 <Botao texto='Criar um novo time' />
             </form>
+            }
         </section>
+            
     )
 }
 
